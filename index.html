@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Original Henry's</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Playfair Display', serif; /* Clean and elegant body font */
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #4a3f35; /* Dark brown for text */
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #008080, #006666); /* Teal gradient */
+            color: white;
+            padding: 40px 0 20px; /* Slimmer padding */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header h1 {
+            font-family: 'Ranchers', cursive; /* Bold and playful font */
+            font-size: 3rem; /* Larger font size for impact */
+            margin: 0;
+            font-weight: 400; /* Ranchers is naturally bold */
+            animation: fadeInDown 1.5s ease-in-out;
+            letter-spacing: 2px; /* Add spacing for a retro feel */
+        }
+        header p {
+            font-family: 'Playfair Display', serif; /* Original font for subtitle */
+            font-size: 1.5rem; /* Slightly larger for emphasis */
+            margin: 10px 0 0;
+            font-style: italic;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        /* Sticky Title */
+        .sticky-title {
+            position: fixed;
+            top: 0;
+            left: -300px; /* Start off-screen */
+            background-color: #B22222; /* Brick red */
+            color: white;
+            padding: 10px 15px; /* Slimmer padding */
+            font-family: 'Ranchers', cursive; /* Bold and playful font */
+            font-size: 1.5rem; /* Smaller font size */
+            font-weight: 400;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: left 0.5s ease-in-out; /* Smooth sliding animation */
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #FFA500; /* Orange */
+            padding: 10px 0; /* Slimmer padding */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            transition: padding-left 0.5s ease-in-out; /* Smooth padding adjustment */
+        }
+        nav a {
+            font-family: 'Playfair Display', serif; /* Original font for navbar */
+            color: white;
+            padding: 10px 20px; /* Slimmer padding */
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: 600;
+            border-radius: 5px;
+            margin: 0 8px; /* Slimmer margin */
+            font-size: 1.1rem; /* Slightly larger for readability */
+        }
+        nav a:hover {
+            background-color: #FF8C00; /* Darker orange */
+            transform: translateY(-3px);
+        }
+
+        /* Container */
+        .container {
+            padding: 30px 20px; /* Slimmer padding */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        .intro, .history, .menu, .contact {
+            margin-bottom: 40px; /* Slimmer margin */
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        /* History Section */
+        .history {
+            background-color: white;
+            padding: 20px; /* Slimmer padding */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .history img {
+            width: 100%;
+            max-height: 300px; /* Slimmer image height */
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px; /* Slimmer margin */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .history p {
+            font-size: 1rem; /* Smaller font size */
+            color: #555;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px; /* Slimmer padding */
+            margin: 15px 0; /* Slimmer margin */
+            background-color: #B22222; /* Brick red */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(178, 34, 34, 0.3);
+        }
+        .btn:hover {
+            background-color: #8B0000; /* Darker red */
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #008080; /* Teal */
+            color: white;
+            text-align: center;
+            padding: 20px 0; /* Slimmer padding */
+            position: relative;
+            overflow: hidden;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem; /* Smaller font size */
+        }
+
+        /* Typography */
+        h2 {
+            font-family: 'Ranchers', cursive; /* Bold and playful font */
+            color: #FF8C00; /* Orange */
+            font-size: 2.5rem; /* Smaller font size */
+            margin-bottom: 15px; /* Slimmer margin */
+            font-weight: 400;
+            text-align: center;
+            letter-spacing: 2px; /* Add spacing for a retro feel */
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem; /* Smaller font size */
+            }
+            header p {
+                font-size: 1.2rem; /* Smaller font size */
+            }
+            nav a {
+                padding: 8px 15px; /* Slimmer padding */
+                margin: 0 5px; /* Slimmer margin */
+                font-size: 1rem; /* Smaller font size */
+            }
+            h2 {
+                font-size: 2rem; /* Smaller font size */
+            }
+            .container {
+                padding: 20px; /* Slimmer padding */
+            }
+            .sticky-title {
+                font-size: 1.2rem; /* Smaller font size */
+                padding: 8px 12px; /* Slimmer padding */
+            }
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <h1>The Original Henry's</h1>
+    <p>Authentic Mexican Cuisine in San Angelo, TX</p>
+</header>
+
+<!-- Sticky Title -->
+<div class="sticky-title">The Original Henry's</div>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#history">History</a>
+    <a href="menu.html" target="_blank">Menu</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+    <section id="home" class="intro">
+        <h2>Welcome to The Original Henry's</h2>
+        <p>Experience the rich flavors of Mexico right here in San Angelo, TX. Our restaurant offers a wide variety of traditional dishes made with the freshest ingredients. Whether you're here for a quick lunch or a family dinner, we promise a memorable dining experience.</p>
+        <a href="menu.html" target="_blank" class="btn">View Our Menu</a>
+    </section>
+
+    <section id="history" class="history">
+        <h2>Our History</h2>
+        <img src="https://via.placeholder.com/1200x400/FF8C00/FFFFFF?text=Henry+Hogeda%27s+Legacy" alt="History Image">
+        <p>Since 1952, <strong>The Original Henry's</strong> has been a cornerstone of San Angelo's culinary scene. Founded by <strong>Henry Hogeda</strong>, a passionate chef with a dream to bring authentic Mexican flavors to Texas, our restaurant has grown into a beloved local institution.</p>
+        <p>Henry's vision was simple: to create a place where families could gather, share delicious meals, and celebrate life. With recipes passed down through generations and a commitment to using the freshest ingredients, Henry built a legacy that continues to thrive today.</p>
+        <p>Henry Hogeda was more than a chef—he was a community leader who believed in the power of food to bring people together. His dedication to quality and hospitality set the standard for everything we do at The Original Henry's.</p>
+        <p>Today, we honor Henry's legacy by staying true to his original recipes and values. From our famous tacos to our hearty enchiladas, every dish is a tribute to Henry's passion for authentic Mexican cuisine. We invite you to join us and be a part of our story as we continue to serve the flavors of Mexico with pride and passion.</p>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Address: 123 Main St, San Angelo, TX 76901</p>
+        <p>Phone: (325) 555-1234</p>
+        <p>Email: info@theoriginalhenrys.com</p>
+        <p>Hours: Mon-Sun 11:00 AM - 9:00 PM</p>
+        <a href="#home" class="btn">Back to Top</a>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2023 The Original Henry's. All rights reserved.</p>
+</footer>
+
+<script>
+    // Add smooth scrolling to all links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Sticky Title Logic
+    const header = document.querySelector('header');
+    const stickyTitle = document.querySelector('.sticky-title');
+    const nav = document.querySelector('nav');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > header.offsetHeight) {
+            stickyTitle.style.left = '0'; // Slide in from the left
+            nav.style.paddingLeft = '200px'; // Move nav items to the right
+        } else {
+            stickyTitle.style.left = '-300px'; // Slide out to the left
+            nav.style.paddingLeft = '0'; // Reset padding
+        }
+    });
+</script>
+
+</body>
+</html>
